@@ -21,6 +21,10 @@ app.use(cookieParser());
 app.use(stylus.middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
+const MongoClient = require('mongodb').MongoClient;
+const url = 'mongodb://127.0.0.1:27017';
+const taskDB = 'companyResource';
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
