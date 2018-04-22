@@ -8,6 +8,7 @@ var stylus = require('stylus');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var employeesRouter = require('./routes/employees');
+var departmentRouter = require('./routes/employees');
 
 var app = express();
 
@@ -30,6 +31,7 @@ const taskDB = 'companyResource';
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/api/employees', employeesRouter);
+app.use('/api/departments', departmentRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
