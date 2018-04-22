@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(stylus.middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
-var port = process.env.PORT || 8080;
+var port = process.env.PORT;
 
 const MongoClient = require('mongodb').MongoClient;
 const url = 'mongodb://127.0.0.1:27017';
@@ -50,5 +50,5 @@ app.use(function(err, req, res, next) {
 });
 
 
-app.listen(port);
+app.listen(port, ()=>{console.log('start')});
 module.exports = app;
