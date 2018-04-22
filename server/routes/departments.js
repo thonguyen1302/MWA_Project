@@ -5,13 +5,13 @@ var router = express.Router();
 const MongoClient = require('mongodb').MongoClient;
 const url = 'mongodb://127.0.0.1:27017';
 const dbName = 'companyResource';
+const collection_name = "department";
 
 router.get('/', function(req, res, next) {
     MongoClient.connect(url, function (err, client) {
         if (err) throw err;
         const db = client.db(dbName);
-  
-        db.collection(collection_name).find({ role: 'Department' }).toArray(function (err, docs) {
+        db.collection(collection_name).find({}).toArray(function (err, docs) {
             if (err) throw err;
             console.log(docs);
             res.send(docs);
