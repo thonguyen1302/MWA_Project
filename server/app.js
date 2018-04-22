@@ -8,7 +8,7 @@ var stylus = require('stylus');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var employeesRouter = require('./routes/employees');
-var departmentRouter = require('./routes/employees');
+var departmentRouter = require('./routes/departments');
 
 var app = express();
 
