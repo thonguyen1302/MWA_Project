@@ -42,4 +42,53 @@ router.get('/:emp_id', function (req, res, next) {
     });
 });
 
+
+// Tan Tho Nguyen - ID 986205
+/* UPDATE employe detail. */
+router.put('/:emp_id', function (req, res, next) {
+  MongoClient.connect(url, function (err, client) {
+    if (err) throw err;
+    const db = client.db(taskDB);
+    
+    db.collection(collection_name).findAndModify({ _id: ObjectID(req.params.emp_id) }, {}, 
+      {
+          $set: { 
+              password:	res.body.params.emp_id,
+              email: res.body.params.email,
+              firstname: res.body.params.firstname,
+              lastname: res.body.params.lastname,
+              role: res.body.params.role,
+              customer_ids: res.body.params.customer_ids
+          } 
+      }, (err, result) => {
+        if (err) throw err;
+        console.log(`Success: ${JSON.stringify(result)}!`);
+        res.json(result);
+        client.close();
+      });
+  });
+});
+
+
+
+
+// Tan Tho Nguyen - ID 986205
+/* CREATE employee. */
+router.post('/', function (req, res, next) {
+  MongoClient.connect(url, function (err, client) {
+      if (err) throw err;
+      const db = client.db(taskDB);
+
+      db.collection(collection_name).insert(req.body, (err, docInserted) => {
+          if (err) throw err;
+          console.log(`Success: ${JSON.stringify(docInserted)}!`);
+          res.json(docInserted);
+          // res.render('/tasks');
+          client.close();
+      });
+
+  });
+});
+
+
 module.exports = router;
