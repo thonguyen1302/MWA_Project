@@ -8,6 +8,7 @@ import { AdminComponent } from './admin/admin.component';
 import { adminService } from './admin/admin.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
+import { NavComponent } from './nav/nav.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { LoginComponent } from './login/login.component';
     EmployeeComponent,
     AdminComponent,
     LoginComponent,
+    NavComponent,
   ],
   imports: [
     BrowserModule,
