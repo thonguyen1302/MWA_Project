@@ -4,7 +4,7 @@ import { forkJoin } from 'rxjs/observable/forkJoin';
 
 @Injectable()
 export class DBService {
-  private apiRoot: string = 'http://localhost:3000';
+  private apiRoot: string = 'http://localhost:6060';
 
   constructor(private http: HttpClient) {}
 

@@ -10,9 +10,9 @@ var mongoose = require('mongoose');
 var database = require('./config/database'); 
 mongoose.connect(database.localUrl); 
 
-//var indexRouter = require('./routes/index');
+var indexRouter = require('./routes/index');
 //var usersRouter = require('./routes/users');
-//var employeesRouter = require('./routes/employees');
+var employeesRouter = require('./routes/employees');
 //var departmentRouter = require('./routes/department');
 
 var app = express();
@@ -32,9 +32,9 @@ var port = process.env.PORT;
 // const url = 'mongodb://127.0.0.1:27017';
 // const taskDB = 'companyResource';
 
-// app.use('/', indexRouter);
+ app.use('/', indexRouter);
 // app.use('/api/users', usersRouter);
-// app.use('/api/employees', employeesRouter);
+app.use('/api/employees', employeesRouter);
 // app.use('/api/departments', departmentRouter);
 
 require('./routes/department')(app);
