@@ -18,8 +18,8 @@ var employeesRouter = require('./routes/employees');
 var app = express();
 app.use(morgan('dev')); // log every request to the console
 // view engine setup
-//app.set('views', path.join(__dirname, 'views'));
-//app.set('view engine', 'jade');
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
 
 
 app.use(express.json());
@@ -35,10 +35,11 @@ var port = process.env.PORT;
 
 app.use('/', indexRouter);
 // app.use('/api/users', usersRouter);
-app.use('/api/employees', employeesRouter);
+// app.use('/api/employees', employeesRouter);
 // app.use('/api/departments', departmentRouter);
 
 require('./routes/department')(app);
+require('./routes/employees')(app);
 
 app.use(function(req, res, next){
   res.setHeader('Access-Control-Allow-Origin', '*');
