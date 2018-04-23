@@ -1,0 +1,22 @@
+<p>
+  admin works! {{departments | json}}
+</p>
+<form novalidate (ngSubmit)="onSubmit()" #f="ngForm">
+  <div class="form-group" div class="form-group"
+  [ngClass]="{
+ 'has-danger': departmentName.invalid && (departmentName.dirty || departmentName.touched),
+ 'has-success': departmentName.valid && (departmentName.dirty || departmentName.touched)
+}">
+    <label>Name</label>
+    <input type="text" 
+    class="form-control" 
+    name="departmentName" 
+    [(ngModel)]="department.departmentName"
+    required 
+    #departmentName="ngModel">
+    <div class="form-control-feedback" *ngIf="departmentName.errors && (departmentName.dirty || departmentName.touched)">
+      <p *ngIf="departmentName.errors.required">Name is required</p>
+    </div>
+  </div>
+  <button type="submit">Submit</button>
+</form>
