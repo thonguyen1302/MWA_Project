@@ -10,6 +10,6 @@ export class DBService {
   constructor(private httpClient: HttpClient) { }
 
   getEmployees() {
-    return this.httpClient.get(`${this.apiRoot}/api/departments`);
+    return this.httpClient.get(`${this.apiRoot}/api/employees`);
   }
 }

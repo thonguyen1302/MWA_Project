@@ -4,10 +4,7 @@ function getDepartments(res) {
 
     department.find(function (err, todos) {
         // if there is an error retrieving, send the error. nothing after res.send(err) will execute
-        res.setHeader('Access-Control-Allow-Origin', '*');
-        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
-        res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,contenttype'); // If needed
-        res.setHeader('Access-Control-Allow-Credentials', true); // If needed
+       
         //console.log(todos);
         if (err) {
             res.send(err);
