@@ -1,5 +1,5 @@
 import { Component, OnInit, Injectable } from '@angular/core';
-import { DBService } from '../db.service';
+import { DBService } from '../employee.service';
 import { Observable } from 'rxjs/Observable';
 
 @Component({
