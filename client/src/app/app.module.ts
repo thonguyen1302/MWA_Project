@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { EmployeeComponent } from './employee/employee.component';
-import { DBService } from './db.service';
+import { DBService } from './employee.service';
 import { HttpClientModule } from '@angular/common/http';
 
 
