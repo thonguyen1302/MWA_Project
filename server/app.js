@@ -29,7 +29,7 @@ const url = 'mongodb://127.0.0.1:27017';
 const taskDB = 'companyResource';
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/api/users', usersRouter);
 app.use('/api/employees', employeesRouter);
 app.use('/api/departments', departmentRouter);
 
