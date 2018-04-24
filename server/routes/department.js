@@ -38,8 +38,8 @@ router.route('/:id').put(function (req, res) {
     department.update({ _id: req.body._id }, req.body, function (err, data) {
         if (err)
             res.send(err);
-        //getDepartments(res);
-        res.send("da put");
+        getDepartments(res);
+       // res.send("da put");
     })
 });
 

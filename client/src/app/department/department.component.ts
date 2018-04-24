@@ -54,7 +54,10 @@ export class DepartmentComponent implements OnInit {
     } else {
       const body = this.department;
       this._departmentService.update(body).subscribe(
-        result1 => { console.log(result1); },
+        result1 => {
+        this.departments = result1;
+          $('#modalDepartment').modal('hide');
+        },
         err => {
           console.log(err);
           console.log(`submit`);
