@@ -6,6 +6,7 @@ const express = require('express'),
       cors = require('cors'),
       jsonwebtoken = require("jsonwebtoken"),
       departmentRoutes = require('./routes/department'),
+      customerRoutes = require('./routes/customer'),
       employeeRoutes = require('./routes/employee');
 
       var logger = require("morgan");
@@ -36,6 +37,7 @@ app.use(function(req, res, next) {
 
 app.use('/api/departments', departmentRoutes);
 app.use('/api/employees', employeeRoutes);
+app.use('api/customers', customerRoutes);
 
 const server = app.listen(port, function(){
   console.log('Listening on port ' + port);

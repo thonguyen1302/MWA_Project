@@ -8,6 +8,9 @@ var department = new Schema({
   },
   description: {
     type: String
+  },
+  status: {
+    type: Number
   }
 },{
     collection: 'departments'

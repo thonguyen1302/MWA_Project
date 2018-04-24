@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express.Router();
 
-var department = require('../models/department');
+var user = require('../models/user');
 
-function getDepartments(res) {
-    department.find({'status':1}, function (err, todos) {
+function getModels(res) {
+    user.find({'role':'customer'}, function (err, todos) {
         // if there is an error retrieving, send the error. nothing after res.send(err) will execute
         if (err) {
             res.send(err);
@@ -14,18 +14,17 @@ function getDepartments(res) {
 }
 
 router.route('/').get(function (req, res, next) {
-    getDepartments(res);
+    getModels(res);
 });
 
 router.route('/').post(function (req, res) {
-    department.create({
+    user.create({
         name: req.body.name,
-        description: req.body.description,
-        status: req.body.status,
+        description: req.body.description
     }, function (err, todo) {
         if (err)
             res.send(err);
-        getDepartments(res);
+            getModels(res);
     });
 });
 
@@ -34,18 +33,18 @@ router.route('/').put(function (req, res) {
     department.update({ _id: req.param.id }, req.body, function (err, data) {
         if (err)
             res.send(err);
-        getDepartments(res);
+            getModels(res);
         res.send("da put");
     })
 });
 
-router.route('/:id').delete(function (req, res) {
+router.route('/').delete(function (req, res) {
     department.remove({
         _id: req.params.id
     }, function (err, data) {
         if (err)
             res.send(err);
-        //getDepartments(res);
+            getModels(res);
         res.send("da delete");
     });
 });

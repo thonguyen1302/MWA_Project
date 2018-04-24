@@ -22,7 +22,7 @@
         <td>{{department.description}}</td>
         <td>
           <a href="#" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Edit this department">Edit</a> |
-          <a href="#" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Delete this department">Delete</a>
+          <a href="#" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Delete this department" (click)="onDelete(department._id)">Delete</a>
         </td>
       </tr>
     </table>
@@ -35,6 +35,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="modalDepartment" tabindex="-1" role="dialog" aria-labelledby="modalDepartmentLabel">
+
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -43,6 +44,7 @@
       </div>
       <div class="modal-body">
         <form id="f_Department" novalidate (ngSubmit)="onSubmit()" #f="ngForm">
+            <input type="hidden" name="status" [(ngModel)]="department.status" value="department.status">
           <div class="form-group" div class="form-group" [ngClass]="{
           'has-danger': name.invalid && (name.dirty || name.touched),
           'has-success': name.valid && (name.dirty || name.touched)

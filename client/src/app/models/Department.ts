@@ -1,3 +1,3 @@
 export class Department {
-    constructor(public id= 0, public name: string = '', public description: string = '') { }
+    constructor(public _id = 0, public name: string = '', public description: string = '', public status: number = 1) { }
 }

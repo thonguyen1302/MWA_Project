@@ -2,8 +2,7 @@ var express = require('express');
 var router = express.Router();
 var user = require('../models/user');
 function getEmployees(res) {
-    user.find(function (err, todos) {
-        // if there is an error retrieving, send the error. nothing after res.send(err) will execute
+    user.find({ 'role':'employee' },function (err, todos) {
         if (err) {
             res.send(err);
         }
@@ -15,7 +14,7 @@ router.route('/').get(function (req, res, next) {
     getEmployees(res);
 });
 
-router.route('/').post(function (req, res) {
+router.route('/').post(function (req, res) {getEmployees
     console.log(req.body);
     user.create({
         name: req.body.name,

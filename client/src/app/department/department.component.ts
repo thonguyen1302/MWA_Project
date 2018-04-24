@@ -28,11 +28,12 @@ export class DepartmentComponent implements OnInit {
       result1 => { console.log(result1); },
       err => {
         console.log(err);
-        console.log(`submit`);
+        console.log(`deleted`);
       },
     );
   }
   onSubmit() {
+    debugger;
     const body = this.form.value;
     return this._departmentService.add(body)
     .subscribe(
