@@ -31,6 +31,7 @@ app.use(function(req, res, next) {
     });
   } else {
     req.user = undefined;
+    
     next();
   }
 });
@@ -38,6 +39,19 @@ app.use(function(req, res, next) {
 app.use('/api/departments', departmentRoutes);
 app.use('/api/employees', employeeRoutes);
 app.use('api/customers', customerRoutes);
+
+//////////////////
+var todoList = require('./controller/todoListController'),
+	userHandlers = require('./controller/userController');
+app.route('/tasks')
+.get(userHandlers.loginRequired, todoList.list_all_tasks);
+
+app.route('/auth/register')
+		.post(userHandlers.register);
+
+	app.route('/auth/sign_in')
+    .post(userHandlers.sign_in);
+///////////////////////////
 
 const server = app.listen(port, function(){
   console.log('Listening on port ' + port);

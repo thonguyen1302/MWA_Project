@@ -1,19 +1,25 @@
 var express = require('express');
 var router = express.Router();
 
+var userHandlers = require('../controller/userController');
+
 var department = require('../models/department');
 
 function getDepartments(res) {
     department.find({ 'status': 1 }, function (err, todos) {
-        // if there is an error retrieving, send the error. nothing after res.send(err) will execute
         if (err) {
             res.send(err);
         }
-        res.json(todos); // return all todos in JSON format
+        res.json(todos);
     }).sort({ 'createdDate': -1 });
 }
 
-router.route('/').get(function (req, res, next) {
+//app.use('api/customers', customerRoutes);
+//route.route('/test').get(userHandlers.loginRequired, null);
+// app.route('/tasks')
+// .get(userHandlers.loginRequired, todoList.list_all_tasks)
+
+router.route('/').get(userHandlers.loginRequired, function (req, res, next) {
     getDepartments(res);
 });
 
