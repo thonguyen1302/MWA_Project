@@ -20,7 +20,7 @@ var UserSchema = new Schema({
   email: {
     type: String,
     //unique: true,
-    lowercase: true,
+    //lowercase: true,
     trim: true
     //required: true
   },
@@ -44,5 +44,5 @@ UserSchema.methods.comparePassword = function (password) {
   return bcrypt.compareSync(password, this.hash_password);
 };
 
-// mongoose.model('user', UserSchema);
+/// mongoose.model('user', UserSchema);
 module.exports = mongoose.model('user', UserSchema);
