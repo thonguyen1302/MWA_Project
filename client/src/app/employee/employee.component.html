@@ -1,14 +1,14 @@
-<app-nav role="Employee"></app-nav>
+<app-nav role="HR"></app-nav>
 <div class="container">
   <div class="row">
-      <h2>Employees</h2>
+      <h2 class="text-success">Employees</h2>
       <table class="table table-hover">
         <tr class="success">
-          <td><b>First Name</b></td>
-          <td><b>Last Name</b></td>
-          <td><b>Email</b></td>
-          <td><b>Phone</b></td>
-          <td><b>Action</b></td>
+          <td class="text-success"><b>First Name</b></td>
+          <td class="text-success"><b>Last Name</b></td>
+          <td class="text-success"><b>Email</b></td>
+          <td class="text-success"><b>Phone</b></td>
+          <td class="text-success"><b>Action</b></td>
         </tr>
         <tr *ngFor="let employee of employees">
           <td>{{employee.firstname}}</td>
@@ -16,8 +16,8 @@
           <td>{{employee.email}}</td>
           <td>{{employee.phone}}</td>
           <td>
-            <a href="#" class="text-primary">Edit</a> |
-            <a href="#" class="text-danger">Delete</a>
+            <a href="#" class="btn btn-primary">Edit</a> |
+            <a href="#" class="btn btn-danger">Delete</a>
           </td>
         </tr>
       </table>

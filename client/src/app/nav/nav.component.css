@@ -6,6 +6,11 @@
   margin-bottom: 10px;
 }
 
+.navbar-brand {
+  padding-bottom: 0;
+  padding-top: 0; 
+}
+
 .navbar, .dropdown-menu{
   background: #3b8e7b;
   border: none;
