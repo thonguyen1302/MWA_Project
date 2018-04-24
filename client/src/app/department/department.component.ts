@@ -24,17 +24,20 @@ export class DepartmentComponent implements OnInit {
   }
 
   onDelete(id) {
-    this._departmentService.delete(id).subscribe(
-      result1 => {
-        console.log(result1);
-        this.departments = result1;
-        $('#modalDepartment').modal('hide');
-      },
-      err => {
-        console.log(err);
-        console.log(`deleted`);
-      },
-    );
+
+    if (confirm(`Do you want to delete this Department ?`)) {
+      this._departmentService.delete(id).subscribe(
+        result1 => {
+          console.log(result1);
+          this.departments = result1;
+          $('#modalDepartment').modal('hide');
+        },
+        err => {
+          console.log(err);
+          console.log(`deleted`);
+        },
+      );
+    }
   }
   onSubmit() {
     // tslint:disable-next-line:no-debugger
@@ -55,7 +58,7 @@ export class DepartmentComponent implements OnInit {
       const body = this.department;
       this._departmentService.update(body).subscribe(
         result1 => {
-        this.departments = result1;
+          this.departments = result1;
           $('#modalDepartment').modal('hide');
         },
         err => {
