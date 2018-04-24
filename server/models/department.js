@@ -11,6 +11,9 @@ var department = new Schema({
   },
   status: {
     type: Number
+  },
+  createdDate:{
+    type: Date
   }
 },{
     collection: 'departments'

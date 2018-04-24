@@ -24,7 +24,7 @@ export class DepartmentService {
 
     update(de) {
         const body = JSON.stringify(de);
-        return this.httpClient.put(`${this.apiRoot}/departments/${de.id}`, body);
+        return this.httpClient.put(`${this.apiRoot}/departments/${de._id}`, body, httpOptions);
     }
 
     delete(id) {

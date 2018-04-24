@@ -6,7 +6,7 @@
       Departments
       
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalDepartment">
+      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalDepartment" (click) = "onAdd()">
         Add department
       </button>
     </h2>
@@ -21,17 +21,13 @@
         <td>{{department.name}}</td>
         <td>{{department.description}}</td>
         <td>
-          <a href="#" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Edit this department">Edit</a> |
+          <a href="#" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Edit this department" data-toggle="modal" data-target="#modalDepartment" (click) ="onUpdate(department)" >Edit</a> |
           <a href="#" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Delete this department" (click)="onDelete(department._id)">Delete</a>
         </td>
       </tr>
     </table>
   </div>
 </div>
-
-
-
-
 
 <!-- Modal -->
 <div class="modal fade" id="modalDepartment" tabindex="-1" role="dialog" aria-labelledby="modalDepartmentLabel">
@@ -71,7 +67,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary" form="f_Department">Save</button>
+        <button type="submit" class="btn btn-primary" form="f_Department" [disabled] = "!f_Department.valid">Save</button>
       </div>
     </div>
   </div>
