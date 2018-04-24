@@ -1,12 +1,15 @@
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
-module.exports = mongoose.model('department', {
-    name: {
-        type: String,
-        default: ''
-    },
-    description: {
-        type: String,
-        default: ''
-    }
+// Define collection and schema for Items
+var department = new Schema({
+  name: {
+    type: String
+  },
+  description: {
+    type: String
+  }
+},{
+    collection: 'departments'
 });
+module.exports = mongoose.model('department', department);

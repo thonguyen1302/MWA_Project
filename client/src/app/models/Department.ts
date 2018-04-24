@@ -1,15 +1,3 @@
-// export class Signup{
-
-//     constructor(public firstName: string = '',
-//                 public lastName: string = '',
-//                 public email: string = '',
-//                 public password: string = '',
-//                 public language: string = ''
-//     ) {
-
-//     }
-// }
-
 export class Department {
-    constructor(public departmentName: string = '', public description: string = '') { }
+    constructor(public id= 0, public name: string = '', public description: string = '') { }
 }
