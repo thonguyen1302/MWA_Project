@@ -1,6 +1,8 @@
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
-module.exports = mongoose.model('user', {
+// Define collection and schema for Items
+var employee = new Schema({
     name: {
         type: String,
         default: ''
@@ -25,4 +27,8 @@ module.exports = mongoose.model('user', {
         type: String,
         default: ''
     }
-});
+  },{
+      collection: 'employees'
+  });
+
+module.exports = mongoose.model('employee', employee);
