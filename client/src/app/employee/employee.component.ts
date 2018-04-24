@@ -1,6 +1,7 @@
 import { Component, OnInit, Injectable } from '@angular/core';
 import { DBService } from '../employee.service';
 import { Observable } from 'rxjs/Observable';
+import { Employee } from '../models/Employee';
 
 @Component({
   selector: 'app-employee',
@@ -10,7 +11,8 @@ import { Observable } from 'rxjs/Observable';
 
 
 export class EmployeeComponent implements OnInit {
-  public employees;
+  public employees: any;
+  public employee: Employee = new Employee();
 
   constructor(private _dbService: DBService) { }
 
@@ -21,7 +23,7 @@ export class EmployeeComponent implements OnInit {
   getEmployees() {
     this._dbService.getEmployees()
       .subscribe(
-        data => this.employees = data,
+        data => { console.log(this.employees); this.employees = data;},
         err => console.error(err),
         () => console.log('done loading Employees'));
   }
