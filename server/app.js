@@ -23,12 +23,6 @@ app.use(cors());
 const port = 6060;
 
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
-
-app.use(function(req, res, next) {
   console.log(req.headers);
   if (req.headers && req.headers.authorization && req.headers.authorization.split(' ')[0] === 'JWT') {
    
