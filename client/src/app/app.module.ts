@@ -19,6 +19,7 @@ import { AuthInterceptor } from './utils/AuthInterceptor';
 
 const routesConfig: Routes = [
   { path: 'admin', component: AdminComponent },
+  { path: 'department', component: DepartmentComponent },
   { path: 'employee', component: EmployeeComponent },
   { path: 'login', component: LoginComponent },
   { path: '', component: LoginComponent }
