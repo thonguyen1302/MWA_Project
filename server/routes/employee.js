@@ -26,7 +26,7 @@ router.route('/').post(function (req, res) {getEmployees
 });
 
 router.route('/').put(function (req, res) {
-    department.update({ _id: req.param.id }, req.body, function (err, data) {
+    user.update({ _id: req.param.id }, req.body, function (err, data) {
         if (err)
             res.send(err);
             getEmployees(res);
@@ -34,14 +34,15 @@ router.route('/').put(function (req, res) {
     })
 });
 
-router.route('/').delete(function (req, res) {
-    department.remove({
+router.route('/:id').delete(function (req, res) {
+    user.remove({
         _id: req.params.id
     }, function (err, data) {
         if (err)
             res.send(err);
-            getEmployees(res);
-        res.send("da delete");
+            //getEmployees(res);
+        //res.send("da delete");
+        getEmployees(res);
     });
 });
 

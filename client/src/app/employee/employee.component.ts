@@ -1,5 +1,5 @@
 import { Component, OnInit, Injectable } from '@angular/core';
-import { DBService } from '../employee.service';
+import { EmployeeService } from '../employee/employee.service';
 import { Observable } from 'rxjs/Observable';
 import { Employee } from '../models/Employee';
 
@@ -13,85 +13,78 @@ import { Employee } from '../models/Employee';
 export class EmployeeComponent implements OnInit {
   public employees: any;
   public employee: Employee = new Employee();
+  //public angular: any;
+  public isShowDialog = true;
 
-  constructor(private _dbService: DBService) { }
+  constructor(private _employeeService: EmployeeService) { }
 
   ngOnInit() {
     this.getEmployees();
   }
 
   getEmployees() {
-    this._dbService.getEmployees()
+    this._employeeService.getEmployees()
       .subscribe(
-        data => { console.log(this.employees); this.employees = data;},
+        data => { console.log(this.employees); this.employees = data; },
         err => console.error(err),
         () => console.log('done loading Employees'));
   }
 
+  onUpdate(val) {
+    // tslint:disable-next-line:no-debugger
+    debugger;
+    this.employee = val;
+  }
+
+  onAdd() {
+    this.employee = new Employee();
+  }
+
+  onDelete(id) {
+debugger;
+    if (confirm(`Do you want to delete this Employee ?`)) {
+      this._employeeService.delete(id).subscribe(
+        result => {
+          console.log(result);
+          this.employees = result;
+        },
+        err => {
+          console.log(err);
+          console.log(`deleted`);
+        },
+      );
+    }
+  }
+  onSubmit() {
+    // tslint:disable-next-line:no-debugger
+    debugger;
+    if (this.employee._id === 0) {
+      this.employee.role = `employee`;
+      const body = this.employee;
+      return this._employeeService.add(body)
+        .subscribe(
+          result1 => {
+            this.employees = result1;
+            this.isShowDialog = false;
+            return true;
+          },
+          err => {
+            console.log(err);
+          },
+      );
+    } else {
+      const body = this.employee;
+      this._employeeService.update(body).subscribe(
+        result1 => {
+          this.employees = result1;
+          //$('#modalDepartment').modal('hide');
+        },
+        err => {
+          console.log(err);
+          console.log(`submit`);
+        },
+      );
+    }
+  }
+
 }
-
-
-
-//   ngOnInit() {
-//     this.getFoods();
-//     this.getBooksAndMovies();
-//   }
-
-//   getFoods() {
-//     this._demoService.getFoods()
-//       .subscribe(
-//         data => this.foods = data,
-//         err => console.error(err),
-//         () => console.log('done loading foods'));
-//   }
-
-//   createFood(name) {
-//     let food = { name: name };
-//     this._demoService.createFood(food)
-//       .subscribe(
-//         data => {
-//           this.getFoods(); return true;
-//         }, error => {
-//           console.error('Error saving food');
-//           return Observable.throw(error);
-//         });
-//   }
-
-//   updateFood(food){
-//     this._demoService.updateFood(food)
-//       .subscribe(
-//         data => {
-//           this.getFoods(); return true;
-//         }, error => {
-//           console.error('Error updating food');
-//           return Observable.throw(error);
-//         });
-//   }
-
-//   deleteFood(food){
-//     if (confirm("Are you sure you want to delete " + food.name + "?")) {
-//       this._demoService.deleteFood(food)
-//       .subscribe(
-//         data => {
-//           this.getFoods(); return true;
-//         }, error => {
-//           console.error('Error deleting food');
-//           return Observable.throw(error);
-//         });
-    
-//     }
-//   }
-
-//   getBooksAndMovies() {
-//     this._demoService.getBooksAndMovies().subscribe(
-//       data => {
-//         this.books = data[0],
-//           this.movies = data[1]
-//       },
-//       err => console.error(err),
-//       () => console.log('done loading books and movies')
-//     );
-//   }
-
-
-// }

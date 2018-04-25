@@ -46,10 +46,10 @@ var todoList = require('./controller/todoListController'),
 app.route('/tasks')
 .get(userHandlers.loginRequired, todoList.list_all_tasks);
 
-app.route('/auth/register')
+app.route('/api/register')
 		.post(userHandlers.register);
 
-	app.route('/auth/sign_in')
+	app.route('/api/sign_in')
     .post(userHandlers.sign_in);
 ///////////////////////////
 

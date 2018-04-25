@@ -7,23 +7,28 @@ var mongoose = require('mongoose'),
   ;
 
 exports.register = function (req, res) {
-  console.log(req.body);
-  var newUser = new User(req.body);
+  
+  var newUser = new User();
+  newUser.firstname = req.body.firstname;
+  newUser.lastname = req.body.lastname;
+  newUser.role = req.body.role;
+  newUser.email= req.body.email;
+  newUser.phone = req.body.phone;
   newUser.hash_password = bcrypt.hashSync(req.body.password, 10);
   newUser.save(function (err, user) {
     if (err) {
+      console.log("save");
       return res.status(400).send({
         message: err
       });
     } else {
       user.hash_password = undefined;
-      return res.json(user);
+      res.redirect('/api/employees');
     }
   });
 };
 
 exports.sign_in = function (req, res) {
-  //console.log("asdf1112");
   User.findOne({
     email: req.body.email
   }, function (err, user) {

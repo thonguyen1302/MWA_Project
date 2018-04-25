@@ -4,18 +4,16 @@ var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
-  name: {
-    type: String,
-    default: ''
-  },
-  password: {
-    type: String,
-    default: ''
-  },
-  fullName: {
+  firstname: {
     type: String,
     trim: true
-    //required: true
+  },
+  lastname:{
+    type: String
+  },
+  role: {
+    type: String,
+    default: ''
   },
   email: {
     type: String,
@@ -23,18 +21,21 @@ var UserSchema = new Schema({
     //lowercase: true,
     trim: true
     //required: true
+  }, 
+  phone: {
+    type: String
+  },
+  password: {
+    type: String,
+    default: ''
   },
   hash_password: {
     type: String
     //required: true
   },
-  created: {
+  createdDate: {
     type: Date,
     default: Date.now
-  },
-  role: {
-    type: String,
-    default: ''
   }
 }, {
     collection: 'users'
