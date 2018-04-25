@@ -3,13 +3,15 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Headers } from '@angular/http';
 import { forkJoin } from 'rxjs/observable/forkJoin';
 import 'rxjs/add/operator/toPromise';
+import { environment } from '../../environments/environment';
+
 const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
 @Injectable()
 export class DepartmentService {
-    private apiRoot: String = 'http://localhost:6060/api';
+    private apiRoot: String = `${environment.apiUrl}/api`;
 
     constructor(private httpClient: HttpClient) { }
 

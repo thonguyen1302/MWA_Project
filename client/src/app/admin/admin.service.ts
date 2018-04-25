@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { forkJoin } from 'rxjs/observable/forkJoin';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class adminService {
-  private apiRoot: string = 'http://localhost:6060';
+  private apiRoot: string = `${environment.apiUrl}`;
 
   constructor(private httpClient: HttpClient) { }
 
