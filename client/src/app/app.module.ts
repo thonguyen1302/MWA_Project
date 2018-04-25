@@ -17,8 +17,10 @@ import {LoginService} from './login/login.service';
 import {Routes, RouterModule} from '@angular/router';
 
 const routesConfig: Routes = [
-  {path: 'admin', component: AdminComponent},
-  {path: 'employee', component: EmployeeComponent}
+  { path: 'admin', component: AdminComponent},
+  { path: 'employee', component: EmployeeComponent},
+  { path: 'login', component: LoginComponent},
+  { path: '', component: LoginComponent}
 ];
 
 @NgModule({
