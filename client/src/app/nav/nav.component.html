@@ -18,9 +18,9 @@
 
 
           <ul class="nav navbar-nav" *ngIf="role === 'admin'">
-            <li><a class="btn" (click) = "this.router.navigate(['/department']);">Departments</a></li>
-            <li><a class="btn" (click) = "this.router.navigate(['/employee']);">Employees</a></li>
-            <li><a class="btn" (click) = "this.router.navigate(['/customer']);">Customers</a></li>
+            <li [class]="this.router.url === '/department' ? 'active' : '' "><a class="btn" (click) = "this.router.navigate(['/department']);">Departments</a></li>
+            <li [class]="this.router.url === '/employee' ? 'active' : '' "><a class="btn" (click) = "this.router.navigate(['/employee']);">Employees</a></li>
+            <li [class]="this.router.url === '/customer' ? 'active' : '' "><a class="btn" (click) = "this.router.navigate(['/customer']);">Customers</a></li>
           </ul>
 
 
