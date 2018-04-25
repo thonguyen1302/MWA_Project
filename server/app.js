@@ -22,10 +22,9 @@ app.use(bodyParser.json());
 app.use(cors());
 const port = 6060;
 
-app.use(function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', "*");
-  res.header("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, Authorization");
-  res.header('Access-Control-Allow-Methods', 'POST, GET, PATCH, DELETE, OPTIONS, HEAD');
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
 
