@@ -6,7 +6,7 @@
       Employees
 
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalEmployee">
+      <button type="button" class="btn btn-success" (click) = "onAdd()" data-toggle="modal" data-target="#modalEmployee">
         Add employee
       </button>
     </h2>
@@ -35,8 +35,10 @@
         <td>{{employee.email}}</td>
         <td>{{employee.phone}}</td>
         <td>
-          <a href="#" class="btn btn-primary">Edit</a> |
-          <a href="#" class="btn btn-danger" (click) = "onDelete(employee._id)">Delete</a>
+          <a href="#" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Edit this employee" data-toggle="modal" data-target="#modalEmployee" (click) ="onUpdate(employee)" >Edit</a> |
+          <!-- <a href="#" class="btn btn-danger" (click) = "onDelete(employee._id)">Delete</a> -->
+          <button class="btn btn-danger" (click) = "onDelete(employee._id)">Delete</button>
+          <!-- <a href="#" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Edit this department" data-toggle="modal" data-target="#modalDepartment" (click) ="onUpdate(department)" >Edit</a> |           -->
         </td>
       </tr>
     </table>
@@ -113,6 +115,7 @@
       </div>
     </div>
   </div>
+  <!-- {{employee | json}} -->
 </div>
 
 

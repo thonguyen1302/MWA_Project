@@ -13,7 +13,6 @@ import { Employee } from '../models/Employee';
 export class EmployeeComponent implements OnInit {
   public employees: any;
   public employee: Employee = new Employee();
-  //public angular: any;
   public isShowDialog = true;
 
   constructor(private _employeeService: EmployeeService) { }
@@ -31,17 +30,16 @@ export class EmployeeComponent implements OnInit {
   }
 
   onUpdate(val) {
-    // tslint:disable-next-line:no-debugger
     debugger;
     this.employee = val;
   }
 
   onAdd() {
+    debugger;
     this.employee = new Employee();
   }
 
   onDelete(id) {
-debugger;
     if (confirm(`Do you want to delete this Employee ?`)) {
       this._employeeService.delete(id).subscribe(
         result => {
@@ -66,6 +64,7 @@ debugger;
           result1 => {
             this.employees = result1;
             this.isShowDialog = false;
+            //this.employee = new Employee();
             return true;
           },
           err => {
