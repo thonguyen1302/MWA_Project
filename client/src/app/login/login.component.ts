@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserLogin } from '../models/user';
 import { LoginService } from './login.service';
 import { Observable } from 'rxjs/Observable';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
 
   public userLogin: UserLogin = new UserLogin();
   public userResponse: any;
+
 
   constructor(private _loginService: LoginService, private router: Router) { }
 
@@ -27,9 +28,13 @@ export class LoginComponent implements OnInit {
           console.log(result);
           this.userResponse = result;
           localStorage.setItem('token', `JWT ${this.userResponse.token}`);
-          this.router.navigate(['/employee']);
+          if (this.userResponse.role === 'admin') {
+            this.router.navigate(['/admin']);
+          } else if (this.userResponse.role === 'employee') {
+            this.router.navigate(['/employee']);
+          }
         },
-        err => {console.log(err)}
+        err => { console.log(err); }
       );
   }
 }

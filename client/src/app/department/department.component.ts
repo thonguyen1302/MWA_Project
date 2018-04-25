@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DepartmentService } from './department.service';
 import { Department } from '../models/department';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-department',
@@ -10,12 +11,10 @@ import { Department } from '../models/department';
 export class DepartmentComponent implements OnInit {
   public departments: any;
   public department: Department = new Department();
-  constructor(private _departmentService: DepartmentService) { }
+  constructor(private _departmentService: DepartmentService, private router: Router) { }
   @ViewChild('f') form: any;
 
   onUpdate(val) {
-    // tslint:disable-next-line:no-debugger
-    debugger;
     this.department = val;
   }
 
@@ -30,8 +29,6 @@ export class DepartmentComponent implements OnInit {
         result1 => {
           console.log(result1);
           this.departments = result1;
-          //$('#modalDepartment').modal('hide');
-          // $('#modalDepartment').modal('hide');
         },
         err => {
           console.log(err);
@@ -41,16 +38,12 @@ export class DepartmentComponent implements OnInit {
     }
   }
   onSubmit() {
-    // tslint:disable-next-line:no-debugger
-    debugger;
     if (this.department._id === 0) {
       const body = this.department;
       return this._departmentService.add(body)
         .subscribe(
           result1 => {
             this.departments = result1;
-            //$('#modalDepartment').modal('hide');
-            // $('#modalDepartment').modal('hide');
           },
           err => {
             console.log(err);
@@ -61,8 +54,6 @@ export class DepartmentComponent implements OnInit {
       this._departmentService.update(body).subscribe(
         result1 => {
           this.departments = result1;
-          //$('#modalDepartment').modal('hide');
-          // $('#modalDepartment').modal('hide');
         },
         err => {
           console.log(err);
@@ -78,8 +69,13 @@ export class DepartmentComponent implements OnInit {
   getDepartments() {
     this._departmentService.getDepartment()
       .subscribe(
-        data => { this.departments = data; },
-        err => console.log(err),
+        data => {
+          this.departments = data;
+        },
+        err => {
+          console.log(err);
+          this.router.navigate(['/login']);
+        },
         () => console.log('done loading')
       );
   }

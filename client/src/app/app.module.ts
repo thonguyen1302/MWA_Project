@@ -9,19 +9,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { NavComponent } from './nav/nav.component';
 import { DepartmentComponent } from './department/department.component';
-import { EmployeeComponent} from './employee/employee.component';
+import { EmployeeComponent } from './employee/employee.component';
 
-import {DepartmentService} from './department/department.service';
+import { DepartmentService } from './department/department.service';
 import { EmployeeService } from './employee/employee.service';
-import {LoginService} from './login/login.service';
-import {Routes, RouterModule} from '@angular/router';
+import { LoginService } from './login/login.service';
+import { Routes, RouterModule } from '@angular/router';
 import { AuthInterceptor } from './utils/AuthInterceptor';
 
 const routesConfig: Routes = [
-  { path: 'admin', component: AdminComponent},
-  { path: 'employee', component: EmployeeComponent},
-  { path: 'login', component: LoginComponent},
-  { path: '', component: LoginComponent}
+  { path: 'admin', component: AdminComponent },
+  { path: 'employee', component: EmployeeComponent },
+  { path: 'login', component: LoginComponent },
+  { path: '', component: LoginComponent }
 ];
 
 @NgModule({
@@ -39,7 +39,7 @@ const routesConfig: Routes = [
     FormsModule,
     RouterModule.forRoot(routesConfig),
   ],
-  providers: [adminService, DepartmentService, EmployeeService, LoginService, 
+  providers: [adminService, DepartmentService, EmployeeService, LoginService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
