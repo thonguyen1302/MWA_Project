@@ -31,6 +31,7 @@ export class DepartmentComponent implements OnInit {
           console.log(result1);
           this.departments = result1;
           //$('#modalDepartment').modal('hide');
+          // $('#modalDepartment').modal('hide');
         },
         err => {
           console.log(err);
@@ -49,6 +50,7 @@ export class DepartmentComponent implements OnInit {
           result1 => {
             this.departments = result1;
             //$('#modalDepartment').modal('hide');
+            // $('#modalDepartment').modal('hide');
           },
           err => {
             console.log(err);
@@ -60,6 +62,7 @@ export class DepartmentComponent implements OnInit {
         result1 => {
           this.departments = result1;
           //$('#modalDepartment').modal('hide');
+          // $('#modalDepartment').modal('hide');
         },
         err => {
           console.log(err);
