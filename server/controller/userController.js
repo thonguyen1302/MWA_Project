@@ -29,6 +29,8 @@ exports.register = function (req, res) {
 };
 
 exports.sign_in = function (req, res) {
+  console.log("12");
+  console.log(req.body);
   User.findOne({
     email: req.body.email
   }, function (err, user) {
