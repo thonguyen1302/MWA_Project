@@ -22,7 +22,8 @@
         <td>{{department.description}}</td>
         <td>
           <a href="#" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Edit this department" data-toggle="modal" data-target="#modalDepartment" (click) ="onUpdate(department)" >Edit</a> |
-          <a href="#" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Delete this department" (click)="onDelete(department._id)">Delete</a>
+          <!-- <a href="javascript:void(0);" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Delete this department">Delete11123</a> -->
+          <button class="btn btn-danger" (click)="onDelete(department._id)">Delete</button>
         </td>
       </tr>
     </table>
