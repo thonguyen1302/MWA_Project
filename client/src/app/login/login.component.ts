@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
           } else if (this.userResponse.role === 'employee') {
             this.router.navigate(['/employee']);
           }
+          localStorage.setItem('role', this.userResponse.role);
           localStorage.setItem('name', this.userResponse.name);
         },
         err => { console.log(err); }
