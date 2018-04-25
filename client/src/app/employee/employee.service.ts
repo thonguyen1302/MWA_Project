@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { forkJoin } from 'rxjs/observable/forkJoin';
+import { environment } from '../../environments/environment';
+
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 @Injectable()
 export class EmployeeService {
-  private apiRoot: String = 'http://localhost:6060/api';
+  private apiRoot: String = `${environment.apiUrl}/api`;
 
   constructor(private httpClient: HttpClient) { }
 
@@ -16,7 +18,7 @@ export class EmployeeService {
   ///auth/sign_in
   add(de) {
     const body = JSON.stringify(de);
-    return this.httpClient.post(`http://localhost:6060/api/register`, body, httpOptions);
+    return this.httpClient.post(`${environment.apiUrl}/api/register`, body, httpOptions);
   }
 
   update(de) {

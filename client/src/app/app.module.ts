@@ -18,8 +18,10 @@ import {Routes, RouterModule} from '@angular/router';
 import { AuthInterceptor } from './utils/AuthInterceptor';
 
 const routesConfig: Routes = [
-  {path: 'admin', component: AdminComponent},
-  {path: 'employee', component: EmployeeComponent}
+  { path: 'admin', component: AdminComponent},
+  { path: 'employee', component: EmployeeComponent},
+  { path: 'login', component: LoginComponent},
+  { path: '', component: LoginComponent}
 ];
 
 @NgModule({
