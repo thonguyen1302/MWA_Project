@@ -10,9 +10,16 @@ import { LoginComponent } from './login/login.component';
 import { NavComponent } from './nav/nav.component';
 import { DepartmentComponent } from './department/department.component';
 import { EmployeeComponent} from './employee/employee.component';
+
 import {DepartmentService} from './department/department.service';
 import { EmployeeService } from './employee/employee.service';
+import {LoginService} from './login/login.service';
+import {Routes, RouterModule} from '@angular/router';
 
+const routesConfig: Routes = [
+  {path: 'admin', component: AdminComponent},
+  {path: 'employee', component: EmployeeComponent}
+];
 
 @NgModule({
   declarations: [
@@ -27,8 +34,9 @@ import { EmployeeService } from './employee/employee.service';
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    RouterModule.forRoot(routesConfig),
   ],
-  providers: [adminService, DepartmentService, EmployeeService],
+  providers: [adminService, DepartmentService, EmployeeService, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
