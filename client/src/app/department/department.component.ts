@@ -30,7 +30,7 @@ export class DepartmentComponent implements OnInit {
         result1 => {
           console.log(result1);
           this.departments = result1;
-          // $('#modalDepartment').modal('hide');
+          $('#modalDepartment').modal('hide');
         },
         err => {
           console.log(err);
@@ -48,7 +48,7 @@ export class DepartmentComponent implements OnInit {
         .subscribe(
           result1 => {
             this.departments = result1;
-            // $('#modalDepartment').modal('hide');
+            $('#modalDepartment').modal('hide');
           },
           err => {
             console.log(err);
@@ -59,7 +59,7 @@ export class DepartmentComponent implements OnInit {
       this._departmentService.update(body).subscribe(
         result1 => {
           this.departments = result1;
-          // $('#modalDepartment').modal('hide');
+          $('#modalDepartment').modal('hide');
         },
         err => {
           console.log(err);
