@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   constructor(private _loginService: LoginService, private router: Router) { }
 
   ngOnInit() {
+    localStorage.clear();
   }
 
   onSubmit() {
@@ -33,6 +34,7 @@ export class LoginComponent implements OnInit {
           } else if (this.userResponse.role === 'employee') {
             this.router.navigate(['/employee']);
           }
+          localStorage.setItem('name', this.userResponse.name);
         },
         err => { console.log(err); }
       );
