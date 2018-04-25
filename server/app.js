@@ -2,7 +2,7 @@ const express = require('express'),
       path = require('path'),
       bodyParser = require('body-parser'),
       mongoose = require('mongoose'),
-      config = require('./config/database'),
+      config = require('./config'),
       cors = require('cors'),
       jsonwebtoken = require("jsonwebtoken"),
       departmentRoutes = require('./routes/department'),
@@ -12,7 +12,7 @@ const express = require('express'),
       var logger = require("morgan");
 
 mongoose.Promise = global.Promise;
-mongoose.connect(config.localUrl).then(
+mongoose.connect(config.dbUrl).then(
     () => {console.log('Database is connected') },
     err => { console.log('Can not connect to the database'+ err)}
   );
