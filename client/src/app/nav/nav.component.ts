@@ -9,12 +9,15 @@ import {Router} from '@angular/router';
 export class NavComponent implements OnInit {
   @Input() role: String;
 
+  public name = localStorage.getItem('name');
+
+
   constructor(private router: Router) {}
 
   ngOnInit() {
   }
   onLogout() {
-    localStorage.removeItem('token');
+    localStorage.clear();
     this.router.navigate(['/login']);
   }
 }
