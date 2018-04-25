@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://server-mwa-project.herokuapp.com/'
+  apiUrl: 'https://server-mwa-project.herokuapp.com'
 };
