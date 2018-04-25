@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -8,9 +9,12 @@ import { Component, OnInit, Input } from '@angular/core';
 export class NavComponent implements OnInit {
   @Input() role: String;
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit() {
   }
-
+  onLogout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
+  }
 }
