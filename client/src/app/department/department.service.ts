@@ -3,9 +3,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Headers } from '@angular/http';
 import { forkJoin } from 'rxjs/observable/forkJoin';
 import 'rxjs/add/operator/toPromise';
+import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest } from '@angular/common/http';
+import { Observable } from 'rxjs/observable';
+
+
 const httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
+    headers: new HttpHeaders({ 'Content-Type': 'application/json'})};
 
 @Injectable()
 export class DepartmentService {

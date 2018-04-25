@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserLogin } from '../models/user';
 import { LoginService } from './login.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-login',
@@ -10,6 +11,8 @@ import { LoginService } from './login.service';
 export class LoginComponent implements OnInit {
 
   public userLogin: UserLogin = new UserLogin();
+  public userResponse: any;
+
   constructor(private _loginService: LoginService) { }
 
   ngOnInit() {
@@ -17,13 +20,13 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     console.log(this.userLogin);
-    this._loginService.getToken(this.userLogin).subscribe(
-      result => {
-        debugger;
-        console.log(result);
-      },
-      err => {}
-    );
+    this._loginService.getToken(this.userLogin)
+      .subscribe(
+        result => {
+          this.userResponse = result;
+          localStorage.setItem('token', `JWT ${this.userResponse.token}`);
+        },
+        err => { }
+      );
   }
-
 }

@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AdminComponent } from './admin/admin.component';
 import { adminService } from './admin/admin.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -15,6 +15,7 @@ import {DepartmentService} from './department/department.service';
 import { EmployeeService } from './employee/employee.service';
 import {LoginService} from './login/login.service';
 import {Routes, RouterModule} from '@angular/router';
+import { AuthInterceptor } from './utils/AuthInterceptor';
 
 const routesConfig: Routes = [
   {path: 'admin', component: AdminComponent},
@@ -36,7 +37,12 @@ const routesConfig: Routes = [
     FormsModule,
     RouterModule.forRoot(routesConfig),
   ],
-  providers: [adminService, DepartmentService, EmployeeService, LoginService],
+  providers: [adminService, DepartmentService, EmployeeService, LoginService, 
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
