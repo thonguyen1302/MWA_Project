@@ -13,7 +13,8 @@ export class EmployeeService {
   constructor(private httpClient: HttpClient) { }
 
   getEmployees() {
-    return this.httpClient.get(`${this.apiRoot}/employees`);
+    const crole = localStorage.getItem('role');
+    return this.httpClient.get(`${this.apiRoot}/employees?role=${crole}`);
   }
   ///auth/sign_in
   add(de) {
