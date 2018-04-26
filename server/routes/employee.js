@@ -25,12 +25,11 @@ router.route('/').post(function (req, res) {getEmployees
     });
 });
 
-router.route('/').put(function (req, res) {
-    user.update({ _id: req.param.id }, req.body, function (err, data) {
+router.route('/:id').put(function (req, res) {
+    user.update({ _id: req.params.id }, req.body, function (err, data) {
         if (err)
             res.send(err);
             getEmployees(res);
-        res.send("da put");
     })
 });
 
@@ -40,8 +39,6 @@ router.route('/:id').delete(function (req, res) {
     }, function (err, data) {
         if (err)
             res.send(err);
-            //getEmployees(res);
-        //res.send("da delete");
         getEmployees(res);
     });
 });
