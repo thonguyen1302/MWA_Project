@@ -11,6 +11,13 @@ function getEmployees(res, role) {
             }
             res.json(todos); // return all todos in JSON format
         }).sort({ 'createdDate': -1 });
+    } else if (role && role === 'hr') {
+        user.find({ 'role': 'employee' }, function (err, todos) {
+            if (err) {
+                res.send(err);
+            }
+            res.json(todos); // return all todos in JSON format
+        }).sort({ 'createdDate': -1 });
     } else {
         user.find(condition, function (err, todos) {
             if (err) {
