@@ -66,6 +66,7 @@ export class EmployeeComponent implements OnInit {
             this.employees = result1;
             this.isShowDialog = false;
             //this.employee = new Employee();
+            document.getElementById(`btn_close`).click();
             return true;
           },
           err => {

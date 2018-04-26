@@ -51,9 +51,7 @@ export class DepartmentComponent implements OnInit {
         .subscribe(
           result1 => {
             this.departments = result1;
-            document.getElementById(`modalDepartment`).style.display = `none`;
-            document.getElementById(`modalDepartment`).setAttribute(`aria-hidden`, `true`);
-            document.getElementById(`modalDepartment`).setAttribute(`class`, `modal fade`);
+            document.getElementById(`btn_close`).click();
           },
           err => {
             console.log(err);
