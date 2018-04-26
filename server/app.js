@@ -49,7 +49,7 @@ console.log("6");
 
 app.use('/api/departments', departmentRoutes);
 app.use('/api/employees', employeeRoutes);
-app.use('api/customers', customerRoutes);
+app.use('/api/customers', customerRoutes);
 
 //////////////////
 var todoList = require('./controller/todoListController'),

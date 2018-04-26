@@ -17,6 +17,7 @@ import { LoginService } from './login/login.service';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthInterceptor } from './utils/AuthInterceptor';
 import { CustomerComponent } from './customer/customer.component';
+import { CustomerService } from './customer/customer.service';
 
 const routesConfig: Routes = [
   { path: 'admin', component: AdminComponent },
@@ -43,7 +44,7 @@ const routesConfig: Routes = [
     FormsModule,
     RouterModule.forRoot(routesConfig),
   ],
-  providers: [adminService, DepartmentService, EmployeeService, LoginService,
+  providers: [adminService, DepartmentService, EmployeeService, LoginService, CustomerService
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
