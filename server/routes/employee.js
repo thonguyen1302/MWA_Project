@@ -7,7 +7,7 @@ function getEmployees(res) {
             res.send(err);
         }
         res.json(todos); // return all todos in JSON format
-    });
+    }).sort({ 'createdDate': -1 });
 }
 
 router.route('/').get(function (req, res, next) {
