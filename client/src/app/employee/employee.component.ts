@@ -66,6 +66,11 @@ export class EmployeeComponent implements OnInit {
             this.isShowDialog = false;
             //this.employee = new Employee();
             document.getElementById(`btn_close`).click();
+            document.getElementById(`alert`).innerHTML = "Add new successfull";
+            document.getElementById(`alert`).style.display = "block";
+            setTimeout(function(){ 
+              document.getElementById(`alert`).style.display = "none";
+            }, 3000);
             return true;
           },
           err => {
@@ -79,6 +84,11 @@ export class EmployeeComponent implements OnInit {
           this.employees = result1;
           //$('#modalDepartment').modal('hide');
           document.getElementById(`btn_close`).click();
+          document.getElementById(`alert`).innerHTML = "Edit successfull";
+          document.getElementById(`alert`).style.display = "block";
+          setTimeout(function(){ 
+            document.getElementById(`alert`).style.display = "none";
+          }, 3000);
         },
         err => {
           console.log(err);

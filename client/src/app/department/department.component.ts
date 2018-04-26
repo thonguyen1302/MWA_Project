@@ -50,6 +50,11 @@ export class DepartmentComponent implements OnInit {
           result1 => {
             this.departments = result1;
             document.getElementById(`btn_close`).click();
+            document.getElementById(`alert`).innerHTML = "Add new successfull";
+            document.getElementById(`alert`).style.display = "block";
+            setTimeout(function(){ 
+              document.getElementById(`alert`).style.display = "none";
+            }, 3000);
           },
           err => {
             console.log(err);
@@ -61,6 +66,11 @@ export class DepartmentComponent implements OnInit {
         result1 => {
           this.departments = result1;
           document.getElementById(`btn_close`).click();
+          document.getElementById(`alert`).innerHTML = "Edit successfull";
+            document.getElementById(`alert`).style.display = "block";
+            setTimeout(function(){ 
+              document.getElementById(`alert`).style.display = "none";
+            }, 3000);
         },
         err => {
           console.log(err);

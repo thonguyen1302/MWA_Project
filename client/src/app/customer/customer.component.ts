@@ -62,6 +62,11 @@ export class CustomerComponent implements OnInit {
             this.customers = result1;
             this.isShowDialog = false;
             document.getElementById(`btn_close`).click();
+            document.getElementById(`alert`).innerHTML = "Add new successfull";
+            document.getElementById(`alert`).style.display = "block";
+            setTimeout(function(){ 
+              document.getElementById(`alert`).style.display = "none";
+            }, 3000);
             return true;
           },
           err => {
@@ -74,6 +79,11 @@ export class CustomerComponent implements OnInit {
         result1 => {
           this.customers = result1;
           document.getElementById(`btn_close`).click();
+          document.getElementById(`alert`).innerHTML = "Edit successfull";
+            document.getElementById(`alert`).style.display = "block";
+            setTimeout(function(){ 
+              document.getElementById(`alert`).style.display = "none";
+            }, 3000);
         },
         err => {
           console.log(err);
