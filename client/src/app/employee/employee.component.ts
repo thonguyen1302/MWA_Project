@@ -57,7 +57,7 @@ export class EmployeeComponent implements OnInit {
     // tslint:disable-next-line:no-debugger
     debugger;
     if (this.employee._id === 0) {
-      this.employee.role = `employee`;
+      //this.employee.role = `employee`;
       const body = this.employee;
       return this._employeeService.add(body)
         .subscribe(

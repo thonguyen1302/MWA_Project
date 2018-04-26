@@ -22,8 +22,9 @@ exports.register = function (req, res) {
         message: err
       });
     } else {
+      const role = req.query.role;
       user.hash_password = undefined;
-      res.redirect('/api/employees');
+      res.redirect('/api/employees?role='+role);
     }
   });
 };

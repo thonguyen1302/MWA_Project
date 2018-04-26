@@ -19,6 +19,9 @@ import { AuthInterceptor } from './utils/AuthInterceptor';
 import { CustomerComponent } from './customer/customer.component';
 import { CustomerService } from './customer/customer.service';
 
+import { NgReduxModule, NgRedux } from 'ng2-redux';
+import { store, IAppState } from './redux-store/index';
+import { ComponentActions } from './redux-store/actions2';
 const routesConfig: Routes = [
   { path: 'admin', component: AdminComponent },
   { path: 'department', component: DepartmentComponent },
@@ -43,6 +46,7 @@ const routesConfig: Routes = [
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot(routesConfig),
+    NgReduxModule
   ],
   providers: [adminService, DepartmentService, EmployeeService, LoginService, CustomerService,
     {
@@ -52,4 +56,8 @@ const routesConfig: Routes = [
     }],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+    constructor(ngRedux: NgRedux<IAppState>) {
+      ngRedux.provideStore(store);
+    }
+}

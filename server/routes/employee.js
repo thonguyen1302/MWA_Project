@@ -35,7 +35,8 @@ router.route('/').post(function (req, res) {
     }, function (err, todo) {
         if (err)
             res.send(err);
-        getEmployees(res);
+        const role = req.query.role;
+        getEmployees(res, role);
     });
 });
 
@@ -43,7 +44,8 @@ router.route('/:id').put(function (req, res) {
     user.update({ _id: req.params.id }, req.body, function (err, data) {
         if (err)
             res.send(err);
-        getEmployees(res);
+        const role = req.query.role;
+        getEmployees(res, role);
     })
 });
 
@@ -53,7 +55,8 @@ router.route('/:id').delete(function (req, res) {
     }, function (err, data) {
         if (err)
             res.send(err);
-        getEmployees(res);
+        const role = req.query.role;
+        getEmployees(res, role);
     });
 });
 
