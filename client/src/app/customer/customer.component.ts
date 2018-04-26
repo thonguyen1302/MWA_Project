@@ -61,6 +61,7 @@ export class CustomerComponent implements OnInit {
           result1 => {
             this.customers = result1;
             this.isShowDialog = false;
+            document.getElementById(`btn_close`).click();
             return true;
           },
           err => {
@@ -72,6 +73,7 @@ export class CustomerComponent implements OnInit {
       this._customerService.update(body).subscribe(
         result1 => {
           this.customers = result1;
+          document.getElementById(`btn_close`).click();
         },
         err => {
           console.log(err);

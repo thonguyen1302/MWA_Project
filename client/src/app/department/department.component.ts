@@ -60,6 +60,7 @@ export class DepartmentComponent implements OnInit {
       this._departmentService.update(body).subscribe(
         result1 => {
           this.departments = result1;
+          document.getElementById(`btn_close`).click();
         },
         err => {
           console.log(err);

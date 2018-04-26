@@ -81,10 +81,11 @@
                 'has-success': email.valid && (email.dirty || email.touched)
                 }">
               <label>Email</label>
-              <input type="text" rows="5" class="form-control" name="email" [(ngModel)]="customer.email" required #email="ngModel">
+              <input type="text" rows="5" class="form-control" name="email" [(ngModel)]="customer.email" required pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" #email="ngModel">
   
               <span class="help-block" *ngIf="email.errors && (email.dirty || email.touched)">
                 <p *ngIf="email.errors.required">Email is required</p>
+                <p *ngIf="email.errors.pattern">Email wrong format</p>
               </span>
             </div>
             <div class="form-group" class="form-group" [ngClass]="{
@@ -102,7 +103,7 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal" id="btn_close">Close</button>
           <button type="submit" class="btn btn-primary" form="f_customer" [disabled]="!f.valid">Save</button>
         </div>
       </div>

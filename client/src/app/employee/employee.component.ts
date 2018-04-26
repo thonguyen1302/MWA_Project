@@ -78,6 +78,7 @@ export class EmployeeComponent implements OnInit {
         result1 => {
           this.employees = result1;
           //$('#modalDepartment').modal('hide');
+          document.getElementById(`btn_close`).click();
         },
         err => {
           console.log(err);
