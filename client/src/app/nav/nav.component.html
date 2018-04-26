@@ -23,6 +23,14 @@
             <li [class]="this.router.url === '/customer' ? 'active' : '' "><a class="btn" (click) = "this.router.navigate(['/customer']);">Customers</a></li>
           </ul>
 
+          <ul class="nav navbar-nav" *ngIf="role === 'hr'">
+            <li [class]="this.router.url === '/employee' ? 'active' : '' "><a class="btn" (click) = "this.router.navigate(['/employee']);">Employees</a></li>
+          </ul>
+
+          <ul class="nav navbar-nav" *ngIf="role === 'employee'">
+            <li [class]="this.router.url === '/customer' ? 'active' : '' "><a class="btn" (click) = "this.router.navigate(['/customer']);">Customers</a></li>
+          </ul>
+
 
           <ul class="nav navbar-nav pull-right">
             <li class=" dropdown">

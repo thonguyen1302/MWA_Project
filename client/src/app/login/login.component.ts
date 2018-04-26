@@ -30,9 +30,11 @@ export class LoginComponent implements OnInit {
           this.userResponse = result;
           localStorage.setItem('token', `JWT ${this.userResponse.token}`);
           if (this.userResponse.role === 'admin') {
-            this.router.navigate(['/admin']);
-          } else if (this.userResponse.role === 'employee') {
+            this.router.navigate(['/department']);
+          } else if (this.userResponse.role === 'hr') {
             this.router.navigate(['/employee']);
+          } else if (this.userResponse.role === 'employee') {
+            this.router.navigate(['/customer']);
           }
           localStorage.setItem('role', this.userResponse.role);
           localStorage.setItem('name', this.userResponse.name);
