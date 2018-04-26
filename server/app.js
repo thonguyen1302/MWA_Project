@@ -23,20 +23,29 @@ app.use(cors());
 const port = 6060;
 
 app.use(function(req, res, next) {
-  console.log(req.headers);
+  console.log("1");
   if (req.headers && req.headers.authorization && req.headers.authorization.split(' ')[0] === 'JWT') {
+  console.log("2");
    
     jsonwebtoken.verify(req.headers.authorization.split(' ')[1], 'RESTFULAPIs', function(err, decode) {
+  console.log("3");
+      
       if (err) req.user = undefined;
       req.user = decode;
       next();
     });
   } else {
+  console.log("4");
+    
     req.user = undefined;
     
     next();
+  console.log("5");
+    
   }
 });
+console.log("6");
+
 
 app.use('/api/departments', departmentRoutes);
 app.use('/api/employees', employeeRoutes);

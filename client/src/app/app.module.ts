@@ -16,12 +16,14 @@ import { EmployeeService } from './employee/employee.service';
 import { LoginService } from './login/login.service';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthInterceptor } from './utils/AuthInterceptor';
+import { CustomerComponent } from './customer/customer.component';
 
 const routesConfig: Routes = [
   { path: 'admin', component: AdminComponent },
   { path: 'department', component: DepartmentComponent },
   { path: 'employee', component: EmployeeComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'customer', component: CustomerComponent },
   { path: '', component: LoginComponent }
 ];
 
@@ -33,6 +35,7 @@ const routesConfig: Routes = [
     LoginComponent,
     NavComponent,
     DepartmentComponent,
+    CustomerComponent,
   ],
   imports: [
     BrowserModule,

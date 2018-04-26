@@ -1,0 +1,112 @@
+<app-nav role="{{role}}"></app-nav>
+<div class="container">
+  <div class="row">
+
+    <h2 class="text-success">
+      Customer
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-success" (click) = "onAdd()" data-toggle="modal" data-target="#modalcustomer">
+        Add customer
+      </button>
+    </h2>
+
+    <table class="table table-hover">
+      <tr class="success">
+        <td class="text-success">
+          <b>First Name</b>
+        </td>
+        <td class="text-success">
+          <b>Last Name</b>
+        </td>
+        <td class="text-success">
+          <b>Email</b>
+        </td>
+        <td class="text-success">
+          <b>Phone</b>
+        </td>
+        <td class="text-success">
+          <b>Action</b>
+        </td>
+      </tr>
+      <tr *ngFor="let customer of customers">
+        <td>{{customer.firstname}}</td>
+        <td>{{customer.lastname}}</td>
+        <td>{{customer.email}}</td>
+        <td>{{customer.phone}}</td>
+        <td>
+          <a href="#" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Edit this customer" data-toggle="modal" data-target="#modalcustomer" (click) ="onUpdate(customer)" >Edit</a> |
+          <!-- <a href="#" class="btn btn-danger" (click) = "onDelete(customer._id)">Delete</a> -->
+          <button class="btn btn-danger" (click) = "onDelete(customer._id)">Delete</button>
+          <!-- <a href="#" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Edit this department" data-toggle="modal" data-target="#modalDepartment" (click) ="onUpdate(department)" >Edit</a> |           -->
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<!-- Modal -->
+<!-- <div>{{isShowDialog | json}}</div> -->
+<div>
+  <div class="modal fade" id="modalcustomer"  role="dialog" aria-labelledby="modalcustomerLabel" >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title" id="modalcustomerLabel">customer info</h4>
+        </div>
+        <div class="modal-body">
+          <form id="f_customer" novalidate (ngSubmit)="onSubmit()" #f="ngForm">
+            <div class="form-group" class="form-group">
+              <label>First Name</label>
+              <input type="text" rows="5" class="form-control" name="firstname" [(ngModel)]="customer.firstname" required #firstname="ngModel">
+              <span class="help-block" *ngIf="firstname?.errors && (firstname.dirty || firstname.touched)">
+                <p *ngIf="firstname.errors.required">Firstname is required</p>
+              </span>
+            </div>
+            <div class="form-group" div class="form-group" [ngClass]="{
+                'has-danger': lastname.invalid && (lastname.dirty || lastname.touched),
+                'has-success': lastname.valid && (lastname.dirty || lastname.touched)
+                }">
+              <label>Last name</label>
+              <input type="text" rows="5" class="form-control" name="lastname" [(ngModel)]="customer.lastname" required #lastname="ngModel">
+  
+              <span class="help-block" *ngIf="lastname.errors && (lastname.dirty || lastname.touched)">
+                <p *ngIf="lastname.errors.required">Lastname is required</p>
+              </span>
+            </div>
+            <div class="form-group" div class="form-group" [ngClass]="{
+                'has-danger': email.invalid && (email.dirty || email.touched),
+                'has-success': email.valid && (email.dirty || email.touched)
+                }">
+              <label>Email</label>
+              <input type="text" rows="5" class="form-control" name="email" [(ngModel)]="customer.email" required #email="ngModel">
+  
+              <span class="help-block" *ngIf="email.errors && (email.dirty || email.touched)">
+                <p *ngIf="email.errors.required">Email is required</p>
+              </span>
+            </div>
+            <div class="form-group" class="form-group" [ngClass]="{
+                'has-danger': phone.invalid && (phone.dirty || phone.touched),
+                'has-success': phone.valid && (phone.dirty || phone.touched)
+                }">
+              <label>Phone</label>
+              <input type="text" rows="5" class="form-control" name="phone" [(ngModel)]="customer.phone" required #phone="ngModel">
+  
+              <span class="help-block" *ngIf="phone.errors && (phone.dirty || phone.touched)">
+                <p *ngIf="phone.errors.required">Phone is required</p>
+              </span>
+            </div>
+      
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" form="f_customer" [disabled]="!f.valid">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- {{customer | json}} -->
+</div>
