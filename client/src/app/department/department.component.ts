@@ -11,8 +11,6 @@ import { Router } from '@angular/router';
 export class DepartmentComponent implements OnInit {
   public departments: any;
   public department: Department = new Department();
-  
-  public role = localStorage.getItem('role');
 
   constructor(private _departmentService: DepartmentService, private router: Router) { }
   @ViewChild('f') form: any;

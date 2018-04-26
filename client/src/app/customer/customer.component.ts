@@ -12,7 +12,6 @@ export class CustomerComponent implements OnInit {
   public customers: any;
   public customer: Customer = new Customer();
   public isShowDialog = true;
-  public role = localStorage.getItem('role');
 
   constructor(private _customerService: CustomerService) { }
 

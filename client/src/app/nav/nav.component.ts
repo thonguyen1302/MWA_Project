@@ -7,9 +7,9 @@ import {Router} from '@angular/router';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-  @Input() role: String;
 
   public name = localStorage.getItem('name');
+  public role = localStorage.getItem('role');
 
 
   constructor(private router: Router) {}

@@ -44,7 +44,7 @@ const routesConfig: Routes = [
     FormsModule,
     RouterModule.forRoot(routesConfig),
   ],
-  providers: [adminService, DepartmentService, EmployeeService, LoginService, CustomerService
+  providers: [adminService, DepartmentService, EmployeeService, LoginService, CustomerService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
