@@ -20,6 +20,10 @@ export class DepartmentComponent implements OnInit {
 
   onAdd() {
     this.department = new Department();
+    //document.getElementById(`modalDepartment`).style.display = `block`;
+    //document.getElementById(`modalDepartment`).setAttribute(`aria-hidden`, `false`);
+
+    ;
   }
 
   onDelete(id) {
@@ -44,6 +48,9 @@ export class DepartmentComponent implements OnInit {
         .subscribe(
           result1 => {
             this.departments = result1;
+            document.getElementById(`modalDepartment`).style.display = `none`;
+            document.getElementById(`modalDepartment`).setAttribute(`aria-hidden`, `true`);
+            document.getElementById(`modalDepartment`).setAttribute(`class`, `modal fade`);
           },
           err => {
             console.log(err);
