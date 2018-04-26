@@ -19,9 +19,14 @@ router.route('/').get(function (req, res, next) {
 });
 
 router.route('/').post(function (req, res) {
+    
     user.create({
         name: req.body.name,
-        description: req.body.description
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        role: req.body.role,
+        email: req.body.email,
+        phone: req.body.phone,
     }, function (err, todo) {
         if (err)
             res.send(err);
@@ -30,8 +35,8 @@ router.route('/').post(function (req, res) {
 });
 
 
-router.route('/').put(function (req, res) {
-    user.update({ _id: req.param.id }, req.body, function (err, data) {
+router.route('/:id').put(function (req, res) {
+    user.update({ _id: req.params.id }, req.body, function (err, data) {
         if (err)
             res.send(err);
         getModels(res);

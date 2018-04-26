@@ -17,7 +17,7 @@ export class CustomerService {
   }
   add(de) {
     const body = JSON.stringify(de);
-    return this.httpClient.post(`${this.apiRoot}/register`, body, httpOptions);
+    return this.httpClient.post(`${this.apiRoot}/customers`, body, httpOptions);
   }
 
   update(de) {
@@ -26,7 +26,6 @@ export class CustomerService {
   }
 
   delete(id) {
-      debugger;
     return this.httpClient.delete(`${this.apiRoot}/customers/${id}`);
   }
 }
