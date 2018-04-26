@@ -15,37 +15,12 @@
             
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          
-          <ul class="nav navbar-nav" *ngIf="role === 'HR'">
-            <li class="active"><a href="/index.html" class="">Home</a></li>
-            
-            <li><a href="/index.html" class="">List employees</a></li>
-
-            <li><a href="/index.html" class="">Add employee</a></li>
-                  
-          </ul>
-
-          <ul class="nav navbar-nav" *ngIf="role === 'Employee'">
-            <li class="active"><a href="/index.html" class="">Home</a></li>
-            
-            <li><a href="/index.html" class="">List customers</a></li>
-
-            <li><a href="/index.html" class="">Add customer</a></li>
-                  
-          </ul>
 
 
-          <ul class="nav navbar-nav" *ngIf="role === 'Admin'">
-            <li class="active"><a href="/index.html" class="">Home</a></li>
-            
-            <li><a href="/index.html" class="">List employees</a></li>
-
-            <li><a href="/index.html" class="">List customers</a></li>
-
-            <li><a href="/index.html" class="">Add employee</a></li>
-
-            <li><a href="/index.html" class="">Add customer</a></li>
-                  
+          <ul class="nav navbar-nav" *ngIf="role === 'admin'">
+            <li [class]="this.router.url === '/department' ? 'active' : '' "><a class="btn" (click) = "this.router.navigate(['/department']);">Departments</a></li>
+            <li [class]="this.router.url === '/employee' ? 'active' : '' "><a class="btn" (click) = "this.router.navigate(['/employee']);">Employees</a></li>
+            <li [class]="this.router.url === '/customer' ? 'active' : '' "><a class="btn" (click) = "this.router.navigate(['/customer']);">Customers</a></li>
           </ul>
 
 
@@ -58,7 +33,7 @@
               </ul>
             </li>
             <!-- <li class=""><a href="#" (click) = "onLogout()">Logout</a></li> -->
-            <li><button class="btn" (click) = "onLogout();">Logout</button></li>
+            <li><a class="btn" (click) = "onLogout();">Logout</a></li>
           </ul>
         </div>
       </div>

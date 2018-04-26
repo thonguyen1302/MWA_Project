@@ -14,6 +14,7 @@ export class EmployeeComponent implements OnInit {
   public employees: any;
   public employee: Employee = new Employee();
   public isShowDialog = true;
+  public role = localStorage.getItem('role');
 
   constructor(private _employeeService: EmployeeService) { }
 
